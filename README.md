@@ -22,4 +22,4 @@ Configurar a o .env-<environment> com as variáveis de ambientes.
 
 |Variável      |Tipo   | Valor Padrão | Descrição                        | 
 |--------------|-------|--------------|----------------------------------|
-|ENVIRONMENT   |String |development   |Determina o ambiente de execuçao  |
+|ENVIRONMENT   |String |development   |Determina o ambiente de execuçao  |# LAB-WEB-2024-1
