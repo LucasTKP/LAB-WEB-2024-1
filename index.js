@@ -2,7 +2,6 @@ const {server, plugins} = require('./server');
 
 (async () => {
     try {
-        //register routes plugins
         await server.register(plugins);
 
         await server.start();

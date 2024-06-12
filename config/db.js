@@ -8,6 +8,6 @@ const sequelizeConfig = {
 };
 
 //database, user, senha
-const sequelize = new Sequelize('aula', 'fatec', 'fatec', sequelizeConfig);
+const sequelize = new Sequelize('postgres', 'postgres', 'admin', sequelizeConfig);
 
 module.exports = {sequelize};

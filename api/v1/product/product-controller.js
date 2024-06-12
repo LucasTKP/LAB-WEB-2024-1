@@ -9,7 +9,6 @@ const getProducts = async (request, h) => {
 }
 
 const create = async (request, h) => {
-
     const {payload} = request;
 
     try {

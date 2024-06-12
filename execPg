@@ -1,0 +1,17 @@
+CREATE TABLE tb_author (
+    id VARCHAR PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    biography TEXT,
+    birthDate DATE
+);
+
+
+CREATE TABLE tb_book (
+    id VARCHAR PRIMARY KEY,
+    title VARCHAR NOT NULL,
+    authorId VARCHAR NOT NULL,
+    publishedDate DATE,
+    isbn VARCHAR UNIQUE,
+    summary TEXT,
+    FOREIGN KEY (authorId) REFERENCES Author(id)
+);

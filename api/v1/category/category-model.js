@@ -7,7 +7,7 @@ const Category = database.sequelize.define('Category', {
         autoIncrement: true,
         allowNull: true,
         primaryKey: true,
-        field: 'codigo' //nome do atributo do banco
+        field: 'codigo'
     },
     description: {
         type: Sequelize.STRING,
@@ -16,7 +16,7 @@ const Category = database.sequelize.define('Category', {
     }
 }, {
     timestamps: false,
-    tableName: 'tb_categoria' //nome da tabela banco
+    tableName: 'tb_categoria'
 });
 
 module.exports = Category;

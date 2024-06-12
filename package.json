@@ -18,7 +18,8 @@
     "joi": "^17.12.3",
     "klaw-sync": "^6.0.0",
     "pg": "^8.11.5",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

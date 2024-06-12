@@ -26,7 +26,6 @@ const swaggerPlugin = [
     }
 ]
 
-
 const plugins = [
     {
         plugin: routes,
