@@ -6,12 +6,12 @@ CREATE TABLE tb_author (
 );
 
 
-CREATE TABLE tb_book (
-    id VARCHAR PRIMARY KEY,
-    title VARCHAR NOT NULL,
-    authorId VARCHAR NOT NULL,
-    publishedDate DATE,
-    isbn VARCHAR UNIQUE,
-    summary TEXT,
-    FOREIGN KEY (authorId) REFERENCES Author(id)
+create table tb_book (
+  id VARCHAR PRIMARY KEY,
+  title varchar(255) not null,
+  author_id varchar(255) not null,
+  published_date date,
+  isbn varchar(255),
+  summary text,
+  foreign key (author_id) references tb_author(id)
 );

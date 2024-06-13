@@ -12,7 +12,7 @@ const createProductsSchema = {
                      .positive()
                      .integer()
                      .required(),
-        category: Joi.object( {
+        category: Joi.object({
             id: Joi.number().integer()
         })
     })
