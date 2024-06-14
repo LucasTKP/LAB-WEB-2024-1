@@ -1,4 +1,4 @@
-const { create } = require("./book-controller");
+const { create, getBooks } = require("./book-controller");
 const schema = require("./book-schema");
 
 const plugin = {
@@ -13,6 +13,15 @@ const plugin = {
           tags: ["api"],
           handler: create,
           validate: schema.createBookSchema,
+        },
+      },
+      {
+        method: "GET",
+        path: "/v1/books",
+        options: {
+          tags: ["api"],
+          handler: getBooks,
+          validate: schema.getBooks,
         },
       },
     ]);

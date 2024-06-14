@@ -12,9 +12,17 @@ const create = async (request, h) => {
     }
 }
 
+const getAuthors = async (request, h) => {
+  const { query } = request;
+
+  const result = await business.list(query);
+  return h.response(result).code(200);
+};
+
 
 
 
 module.exports = {
-    create,
+  create,
+  getAuthors,
 };

@@ -1,4 +1,4 @@
-const { create } = require('./author-controller');
+const { create, getAuthors } = require('./author-controller');
 const schema = require('./author-schema');
 
 const plugin = {
@@ -15,6 +15,15 @@ const plugin = {
                     validate: schema.createAuthorSchema
                 }
             },
+            {
+                method: "GET",
+                path: "/v1/authors",
+                options: {
+                    tags: ['api'],
+                    handler: getAuthors,
+                    validate: schema.getAuthors
+                }
+            }
         ])
     }
 };

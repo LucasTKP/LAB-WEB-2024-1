@@ -8,8 +8,16 @@ const createAuthorSchema = {
             .required(),
         biography: Joi.string()
             .max(500),
-        birthdate: Joi.date().iso().max('now')
+        birthdate: Joi.date().iso()
     })
 };
+const getAuthors = {
+  query: Joi.object({
+    name: Joi.string().min(3).max(100),
+    birthdate: Joi.date().iso(),
+  }),
+};
 
-module.exports = { createAuthorSchema };
+
+
+module.exports = { createAuthorSchema, getAuthors };

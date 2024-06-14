@@ -12,4 +12,13 @@ const createBookSchema = {
   }),
 };
 
-module.exports = { createBookSchema };
+const getBooks = {
+  query: Joi.object({
+    title: Joi.string().min(3).max(255),
+    authorId: Joi.string(),
+    publishedDate: Joi.date().iso().less("now"),
+    isbn: Joi.string(),
+  }),
+};
+
+module.exports = { createBookSchema, getBooks };

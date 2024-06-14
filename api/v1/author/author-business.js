@@ -6,6 +6,11 @@ const create = async (author) => {
     return repository.save(author);
 }
 
+const list = async (filter) => {
+  return repository.findAll(filter);
+};
+
 module.exports = {
-    create,
-}
+  create,
+  list,
+};

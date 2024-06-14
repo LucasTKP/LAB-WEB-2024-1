@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const database = require("../../../config/db");
-const Author = require("../author/author-model"); // Ajuste o caminho conforme necessário
 
 const Book = database.sequelize.define(
   "Book",
@@ -43,10 +42,8 @@ const Book = database.sequelize.define(
   },
   {
     timestamps: false,
-    tableName: "tb_book", // nome da tabela no banco
+    tableName: "tb_book", 
   }
 );
-
-Book.belongsTo(Author, { foreignKey: "authorId" });
 
 module.exports = Book;
