@@ -6,9 +6,8 @@ const save = async (book) => {
   return BookModel.create(book);
 };
 
-
 const findAll = async (filter) => {
-  const { title, authorId, publishedDate, isbn } = filter;
+  const { title, authorName } = filter;
 
   try {
     const books = await BookModel.findAll({
@@ -21,9 +20,9 @@ const findAll = async (filter) => {
       ],
       where: {
         ...(title ? { title: { [Op.iLike]: `${title}%` } } : {}),
-        ...(authorId ? { authorId } : {}),
-        ...(publishedDate ? { publishedDate: { [Op.lt]: publishedDate } } : {}),
-        ...(isbn ? { isbn } : {}),
+        ...(authorName
+          ? { "$Author.name$": { [Op.iLike]: `${authorName}%` } }
+          : {}),
       },
     });
 
@@ -34,7 +33,20 @@ const findAll = async (filter) => {
   }
 };
 
+const findById = async (params) => {
+  return BookModel.findByPk(params.id, {
+    include: [
+      {
+        model: AuthorModel,
+        required: true,
+        attributes: ["id", "name"],
+      },
+    ],
+  });
+};
+
 module.exports = {
   save,
   findAll,
+  findById,
 };

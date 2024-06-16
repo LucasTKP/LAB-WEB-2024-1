@@ -3,7 +3,7 @@ const Joi = require("joi");
 const createBookSchema = {
   payload: Joi.object({
     title: Joi.string().min(3).max(255).required(),
-    authorId: Joi.object({
+    author: Joi.object({
       id: Joi.string().required(),
     }).required(),
     publishedDate: Joi.date().iso().less("now"),
@@ -15,10 +15,14 @@ const createBookSchema = {
 const getBooks = {
   query: Joi.object({
     title: Joi.string().min(3).max(255),
-    authorId: Joi.string(),
-    publishedDate: Joi.date().iso().less("now"),
-    isbn: Joi.string(),
+    "author.name": Joi.string(),
   }),
 };
 
-module.exports = { createBookSchema, getBooks };
+const getBookById = {
+  params: Joi.object({
+    id: Joi.string().required(),
+  }),
+};
+
+module.exports = { createBookSchema, getBooks, getBookById };

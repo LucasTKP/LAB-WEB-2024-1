@@ -1,4 +1,4 @@
-const { create, getBooks } = require("./book-controller");
+const { create, getBooks, getBookById } = require("./book-controller");
 const schema = require("./book-schema");
 
 const plugin = {
@@ -24,6 +24,15 @@ const plugin = {
           validate: schema.getBooks,
         },
       },
+      {
+        method: "GET",
+        path: "/v1/books/{id}",
+        options: {
+          tags: ["api"],
+          handler: getBookById,
+          validate: schema.getBookById,
+        },
+      }
     ]);
   },
 };

@@ -10,7 +10,12 @@ const list = async (filter) => {
   return repository.findAll(filter);
 };
 
+const findById = async (params) => {
+  return repository.findById(params);
+};
+
 module.exports = {
   create,
   list,
+  findById,
 };

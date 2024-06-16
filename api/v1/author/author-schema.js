@@ -11,13 +11,25 @@ const createAuthorSchema = {
         birthdate: Joi.date().iso()
     })
 };
-const getAuthors = {
-  query: Joi.object({
-    name: Joi.string().min(3).max(100),
-    birthdate: Joi.date().iso(),
+
+
+const getAuthorById = {
+    params: Joi.object({
+      id: Joi.string().required(),
+    })
+}
+
+const deleteAuthorById = {
+  params: Joi.object({
+    id: Joi.string().required(),
   }),
 };
 
 
 
-module.exports = { createAuthorSchema, getAuthors };
+
+module.exports = {
+  createAuthorSchema,
+  getAuthorById,
+  deleteAuthorById,
+};

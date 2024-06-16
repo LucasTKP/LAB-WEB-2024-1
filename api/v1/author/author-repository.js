@@ -1,14 +1,12 @@
 const { AuthorModel } = require("../associations");
 const { BookModel } = require("../associations");
-const { Op } = require("sequelize");
 
 const save = async (author) => {
   console.log(author);
   return AuthorModel.create(author);
 };
 
-const findAll = async (filter) => {
-  const { name, birthdate } = filter;
+const findAll = async () => {
   return AuthorModel.findAll({
     include: [
       {
@@ -18,14 +16,42 @@ const findAll = async (filter) => {
         attributes: ["id", "title"],
       },
     ],
+  });
+};
+
+const findById = async (params) => {
+  return AuthorModel.findByPk(params.id, {
+    include: [
+      {
+        model: BookModel,
+        as: "books",
+        required: false,
+        attributes: ["id", "title"],
+      },
+    ],
+  });
+};
+
+const deleteById = async (params) => {
+  const response = await AuthorModel.destroy({
     where: {
-      ...(name ? { name: { [Op.iLike]: `${name}%` } } : {}),
-      ...(birthdate ? { birthdate } : {}),
+      id: params.id,
     },
   });
+  if (response == 0) {
+    return {
+      message:
+        "Não é possível excluir o autor pois existem livros associados a ele",
+      success: false,
+    };
+  }
+
+  return { message: "Autor deletado com sucesso", success: true };
 };
 
 module.exports = {
   save,
   findAll,
+  findById,
+  deleteById,
 };
