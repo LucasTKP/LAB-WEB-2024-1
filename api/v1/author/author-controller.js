@@ -15,7 +15,6 @@ const create = async (request, h) => {
 const getAuthors = async (request, h) => {
   const { query } = request;
   const result = await business.list();
-  console.log(result);
   return h.response(result).code(200);
 };
 
@@ -30,9 +29,9 @@ const deleteAuthorById = async (request, h) => {
   const result = await business.deleteById(params);
 
   if (result.success) {
-    return h.response({ message: result.message }).code(200);
+    return h.response({ message: result.message }).code(202);
   } else {
-    return h.response({ message: result.message }).code(400);
+    return h.response({ message: result.message }).code(404);
   }
 };
 

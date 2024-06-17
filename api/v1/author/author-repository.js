@@ -2,7 +2,6 @@ const { AuthorModel } = require("../associations");
 const { BookModel } = require("../associations");
 
 const save = async (author) => {
-  console.log(author);
   return AuthorModel.create(author);
 };
 
@@ -46,7 +45,7 @@ const deleteById = async (params) => {
     };
   }
 
-  return { message: "Autor deletado com sucesso", success: true };
+  return { message: "Autor removido com sucesso", success: true };
 };
 
 module.exports = {

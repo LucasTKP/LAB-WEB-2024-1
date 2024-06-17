@@ -2,7 +2,6 @@ const { BookModel, AuthorModel } = require("../associations");
 const { Op } = require("sequelize");
 
 const save = async (book) => {
-  console.log(book);
   return BookModel.create(book);
 };
 
